@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% for work in workexperience %}
+
+    <h4>{{ work.startdate|date:'jS M. Y' }} - {{ work.enddate|date:'jS M. Y' }}</h4>
+    <h2>{{ work.title }}</h2>
+    <h3>{{ work.company }}</h3>
+    <h4>{{ work.description }}</h4>
+
+    {% endfor %}
+
+
+    {% for project in projects %}
+
+    <h4>{{ project.eventdate|date:'jS M. Y' }}</h4>
+    <h2>{{ project.title }}</h2>
+    <h3>{{ project.description }}</h3>
+    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+        {% if project.url %}
+            <a href="{{project.url}}">{{ project.url }}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
