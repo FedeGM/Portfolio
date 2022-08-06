@@ -1,0 +1,25 @@
+<div class="projectcard row my-4 text-center">
+    <h3>My Projects</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, voluptatem.</p>
+    {% for project in projects %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body row">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <p>{{ project.eventdate|date:'jS M. Y' }}</p>
+                            <h4>{{ project.title }}</h4>
+                            {% if project.url %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid center" width="45" height="45">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{ project.description }}</p>
+                            <a href="{{project.url}}">{{ project.url }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

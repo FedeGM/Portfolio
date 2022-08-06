@@ -1,14 +1,16 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% load static %}
 
 {% block content %}
-    {% for project in projects %}
-
-    <h4>{{ project.eventdate|date:'jS M. Y' }}</h4>
-    <h2>{{ project.title }}</h2>
-    <h3>{{ project.description }}</h3>
-    <img src="{{ project.image.url }}" alt="{{ project.title }}">
-        {% if project.url %}
-            <a href="{{project.url}}">{{ project.url }}</a>
-        {% endif %}
-    {% endfor %}
+    <header class="introduction row">
+            <div class="col-md-4">
+                <img src="{% static 'portfolio/myself.png' %}" alt="">
+            </div>
+            <div class="col-md-8 my-auto text-light">
+                <h1>I am <strong>Federico Gomez Monroy</strong></h1>
+                <h3>I am a Data Enginner who loves building Websites</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda omnis quaerat ducimus dolorum nam fugiat earum numquam, blanditiis praesentium ut iusto mollitia. Reprehenderit exercitationem ullam laborum nemo eveniet suscipit delectus dolor. In doloremque quae expedita, quam repudiandae dignissimos deserunt labore possimus placeat non similique magni debitis quas quo. Modi, eius!</p>
+            </div>
+    </header>
+    
+    
 {% endblock %}

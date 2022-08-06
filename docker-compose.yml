@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7.22
+    restart: always
+    secrets:
+      - database
+      - db_user
+      - db_password
+      - db_root_password
+    environment:
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=db_password
+      - MYSQL_ROOT_PASSWORD=db_root_password
+    volumes:
+      - .dbdata:/var/lib/mysql
+    ports:
+      - 33066:3306
+secrets:
+  database:
+    file: ./portfolio/.env
+  db_user:
+    file: ./portfolio/.env
+  db_password:
+    file: ./portfolio/.env
+  db_root_password:
+    file: ./portfolio/.env
